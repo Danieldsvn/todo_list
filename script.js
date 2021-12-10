@@ -13,3 +13,13 @@ let p = document.createElement('p');
 p.id = 'funcionamento';
 p.innerText = 'Clique duas vezes em um item para marcá-lo como completo';
 header.appendChild(p);
+//-------------------------------------------------//
+let main = document.createElement('main');
+body.appendChild(main);
+//-------------------------------------------------//
+
+// Requisito 3
+
+let input = document.createElement('input');
+input.id = 'texto-tarefa';
+main.appendChild(input);
