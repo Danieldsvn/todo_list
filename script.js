@@ -34,7 +34,7 @@ let olTaskList = document.createElement('ol');
 olTaskList.id = 'lista-tarefas';
 main.appendChild(olTaskList);
 
-// Requisito 5
+// Requisito 5 e 6
 // criando button
 let button = document.createElement('button');
 button.id = 'criar-tarefa';
