@@ -33,3 +33,22 @@ main.appendChild(input);
 let olTaskList = document.createElement('ol');
 olTaskList.id = 'lista-tarefas';
 main.appendChild(olTaskList);
+
+// Requisito 5
+// criando button
+let button = document.createElement('button');
+button.id = 'criar-tarefa';
+button.style.marginLeft = '10px';
+button.style.width = '60px';
+button.style.height = '15px';
+button.innerText = 'Adicionar'
+input.after(button); // https://developer.mozilla.org/en-US/docs/Web/API/Element/after
+
+// Função que adiciona a tarefa do input para a lista
+button.addEventListener('click', function() {
+    let liTask = document.createElement('li');
+    liTask.innerText = input.value;
+    olTaskList.appendChild(liTask);
+    input.value = "";
+
+})

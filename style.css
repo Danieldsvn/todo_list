@@ -1,0 +1,10 @@
+button {
+    /* https://pt.stackoverflow.com/questions/278978/como-centrar-texto-de-botao-verticalmente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: right;
+    margin-right: 64%;
+}
+
+
