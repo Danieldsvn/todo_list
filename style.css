@@ -6,7 +6,13 @@ button {
     float: right;
     margin-right: 64%;
 }
+/* .task {
+    background-color: white;
+} */
 
-gray {
-    background-color: gray;
+#grayMarked {
+    background-color: rgb(128, 128, 128);
+}
+.completed {
+    text-decoration: line-through solid rgb(0, 0, 0);
 }

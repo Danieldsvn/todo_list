@@ -45,36 +45,76 @@ button.style.height = '15px';
 button.innerText = 'Adicionar'
 input.after(button); // https://developer.mozilla.org/en-US/docs/Web/API/Element/after
 
-// Função que adiciona a tarefa do input para a lista e requisito 7 e 8
-let itensArray = [];
+// Função que adiciona a tarefa do input para a lista 
+function inputToList () {
 button.addEventListener('click', function() {
     let liTask = document.createElement('li');    
-    liTask.innerText = input.value;
-    liTask.addEventListener('click', function(event) { // função para alterar background do item clicado
-        allItens = document.getElementsByTagName('li');
-        let itemColored = event.target;
-        for (i = 0; i < allItens.lenght; i += 1) {
-            let item = allItens[i];            
-            if (item !== itemColored) {
-                item.style.backgroundColor = 'red';
-            }            
-        }
-        itemColored.style.backgroundColor = 'RGB(128, 128, 128)';        
-        })
+    liTask.innerText = input.value;      
     olTaskList.appendChild(liTask);
     input.value = "";
-  
-
+     taskToColor();
+     taskCompleted();
+     removeTasks();
 })
-// Requisito 7 //
+};
+
+inputToList ();
+// Requisito 7 e 8//
 
 
-// function itemBackground () {    
-//     for (let i = 0; i < itensArray.length; i += 1) {           
-//         itensArray[i].addEventListener('click', function(event) {
-//         let itemClicked = event.target;
-//         itemClicked.style.backgroundColor = 'red';
-//         })
-//     }
-// };
-// itemBackground();
+function taskToColor () {
+    let allTasks = document.querySelectorAll('li');    
+    for ( let i = 0; i < allTasks.length; i += 1) { 
+           allTasks[i].addEventListener('click', function (event) {
+           event.target.id = 'grayMarked';
+        })  
+              
+    }
+    
+   
+
+};
+
+
+
+// Requisito 9
+function taskCompleted() {
+        let allTasks = document.querySelectorAll('li');    
+    for ( let i = 0; i < allTasks.length; i += 1) {        
+        allTasks[i].addEventListener('dblclick', function (event) {
+               if ( event.target.className !== 'completed') {
+               event.target.className = 'completed';
+           }
+               else {
+               event.target.className = "";
+           }
+        })  
+              
+    }
+
+};
+
+// Requisito 10
+
+let deleteAll = document.createElement('button');
+deleteAll.id = 'apaga-tudo';
+deleteAll.style.marginLeft = '10px';
+deleteAll.style.width = '90px';
+deleteAll.style.height = '15px';
+deleteAll.innerText = 'Limpar tudo';
+button.after(deleteAll);
+
+function removeTasks () {
+    let allTasks = document.querySelector('ol'); 
+    
+    deleteAll.addEventListener('click', function() {        
+    while (allTasks.firstChild) {
+        allTasks.firstChild.remove(); //https://stackoverflow.com/questions/3955229/remove-all-child-elements-of-a-dom-node-in-javascript
+    }
+    
+    })
+    
+};
+
+
+
