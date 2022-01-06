@@ -37,24 +37,23 @@ main.appendChild(olTaskList);
 
 // Requisito 5 e 6 //
 // criando button
-let button = document.createElement('button');
-button.id = 'criar-tarefa';
-button.style.marginLeft = '10px';
-button.style.width = '60px';
-button.style.height = '15px';
-button.innerText = 'Adicionar'
-input.after(button); // https://developer.mozilla.org/en-US/docs/Web/API/Element/after
+let addButton = document.createElement('button');
+addButton.id = 'criar-tarefa';
+addButton.style.marginLeft = '10px';
+addButton.style.width = '60px';
+addButton.style.height = '15px';
+addButton.innerText = 'Adicionar'
+input.after(addButton); // https://developer.mozilla.org/en-US/docs/Web/API/Element/after
 
-// Função que adiciona a tarefa do input para a lista 
+// Função que adiciona a tarefa do input para a lista e que executa os requisitos do 10 e 11. // -----
 function inputToList () {
-button.addEventListener('click', function() {
+addButton.addEventListener('click', function() {
     let liTask = document.createElement('li');    
     liTask.innerText = input.value;      
     olTaskList.appendChild(liTask);
-    input.value = "";
-     taskToColor();
-     taskCompleted();
+    input.value = "";  
      removeTasks();
+     removeCompletedTasks();
 })
 };
 
@@ -62,39 +61,58 @@ inputToList ();
 // Requisito 7 e 8//
 
 
-function taskToColor () {
-    let allTasks = document.querySelectorAll('li');    
-    for ( let i = 0; i < allTasks.length; i += 1) { 
-           allTasks[i].addEventListener('click', function (event) {
-           event.target.id = 'grayMarked';
-        })  
+// function taskToColor () {
+//     let allTasks = document.querySelectorAll('li');        
+//     for ( let i = 0; i < allTasks.length; i += 1) { 
+//            allTasks[i].addEventListener('click', function (event) {
+//            event.target.id = 'grayMarked';
+//            if (allTasks[i] !== event.target) {
+//                allTasks.id = '';
+//            }
+//         })  
               
-    }
-    
-   
+//     }      
 
-};
+// };
+
+// Requisito 7 e 8//
+let allTasks = document.querySelector('ol');
+allTasks.addEventListener('click', function(event) {
+    let allTasksLi = document.querySelectorAll('li');  
+    for ( let i = 0; i < allTasksLi.length; i += 1) {
+        allTasksLi[i].style.backgroundColor = 'white';
+        event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+     }  
+})
 
 
-
-// Requisito 9
-function taskCompleted() {
-        let allTasks = document.querySelectorAll('li');    
-    for ( let i = 0; i < allTasks.length; i += 1) {        
-        allTasks[i].addEventListener('dblclick', function (event) {
-               if ( event.target.className !== 'completed') {
-               event.target.className = 'completed';
-           }
-               else {
-               event.target.className = "";
-           }
-        })  
+// Requisito 9 //
+// function taskCompleted() {
+//         let allTasks = document.querySelectorAll('li');    
+//     for ( let i = 0; i < allTasks.length; i += 1) {        
+//         allTasks[i].addEventListener('dblclick', function (event) {
+//                if ( event.target.className !== 'completed') {
+//                event.target.className = 'completed';
+//            }
+//                else {
+//                event.target.className = "";
+//            }
+//         })  
               
+//     }
+
+// };
+
+allTasks.addEventListener('dblclick', function(event) {      
+    if ( event.target.className != 'completed') {
+        event.target.className = 'completed';
     }
-
-};
-
-// Requisito 10
+        else {
+        event.target.className = "";
+    }
+     }  
+)
+// Requisito 10 //
 
 let deleteAll = document.createElement('button');
 deleteAll.id = 'apaga-tudo';
@@ -102,11 +120,10 @@ deleteAll.style.marginLeft = '10px';
 deleteAll.style.width = '90px';
 deleteAll.style.height = '15px';
 deleteAll.innerText = 'Limpar tudo';
-button.after(deleteAll);
+addButton.after(deleteAll);
 
 function removeTasks () {
-    let allTasks = document.querySelector('ol'); 
-    
+    let allTasks = document.querySelector('ol');     
     deleteAll.addEventListener('click', function() {        
     while (allTasks.firstChild) {
         allTasks.firstChild.remove(); //https://stackoverflow.com/questions/3955229/remove-all-child-elements-of-a-dom-node-in-javascript
@@ -116,5 +133,25 @@ function removeTasks () {
     
 };
 
+// requisito 11 //
 
+let deleteCompleted = document.createElement('button');
+deleteCompleted.id = 'remover-finalizados';
+deleteCompleted.style.marginLeft = '50px';
+deleteCompleted.style.marginTop = '10px';
+deleteCompleted.style.width = '110px';
+deleteCompleted.style.height = '20px';
+deleteCompleted.innerText = 'Limpar feitos';
+deleteAll.after(deleteCompleted);
 
+function removeCompletedTasks () {
+    let completedTasks = document.getElementsByClassName('completed');     
+    deleteCompleted.addEventListener('click', function() {        
+    while (completedTasks.length > 0) {
+        completedTasks[0].remove();
+
+    }    
+    }) 
+};
+
+     
