@@ -1,7 +1,10 @@
 # Projeto To Do List <br>
 Terceiro projeto na Trybe. Este projeto consiste em uma lista de tarefas feita utilizando Javascript, HTML e CSS.<br>
 # O que faz:
-Nesta aplicação é possível adicionar tarefas, "riscar" tarefas concluídas, limpar tarefas feitas e limpar todas as tarefas. <br>
+Nesta aplicação é possível adicionar tarefas, "riscar" tarefas concluídas, limpar tarefas feitas e limpar todas as tarefas. 
+<br>
+# O que é de minha autoria: <br>
+Os arquivos /index.html, /style.css e /script.js
 # Como utilizar
 Para executar o projeto faça o clone do repositório, entre na pasta do projeto com o VS CODE e utilize a extensão Live Server para rodar a aplicação no navegador Chrome!
 <!-- Olá, Tryber!
